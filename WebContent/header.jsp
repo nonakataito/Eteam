@@ -9,9 +9,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css'/>">
+
 </head>
 
 
 <!-- 上部タイトルエリア -->
 <div class="header-wrapper">
+<h3>得点管理システム</h3>テスト様
+<a href="<c:url value='/sample.jsp'/>">ログアウト</a>
 </div>

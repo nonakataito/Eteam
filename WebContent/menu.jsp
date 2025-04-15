@@ -9,14 +9,14 @@
 <div class="menu-container">
 	<h2>メニュー</h2>
 	<ul class="menu-list">
-		<a href="<c:url value='student/listAllStudent.jsp'/>">学生管理</a>
+		<a href="<c:url value='sample.jsp'/>">学生管理</a>
 		<br>
 		成績管理
 		<br>
-		　<a href="<c:url value='student/addStudent.jsp'/>">成績登録</a>
+		　<a href="<c:url value='sample.jsp'/>">成績登録</a>
 		<br>
-		　<a href="<c:url value='student/updateStudentSelect.jsp'/>">成績参照</a>
+		　<a href="<c:url value='sample.jsp'/>">成績参照</a>
 		<br>
-		<a href="<c:url value='student/deleteStudentSelect.jsp'/>">科目管理</a>
+		<a href="<c:url value='sample.jsp'/>">科目管理</a>
 	</ul>
 </div>
