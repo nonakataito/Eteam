@@ -17,5 +17,5 @@
 <div class="header-wrapper">
 <h1>得点管理システム</h1>
 <a>テスト 様</a>
-<a href="<c:url value='/account/logout-in.jsp'/>">ログアウト</a>
+<a href="<c:url value='/main/logout-out.jsp'/>">ログアウト</a>
 </div>
