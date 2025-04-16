@@ -16,6 +16,12 @@
 <!-- 上部タイトルエリア -->
 <div class="header-wrapper">
 <h1>得点管理システム</h1>
-<a>テスト 様</a>
-<a href="<c:url value='/main/logout-out.jsp'/>">ログアウト</a>
+<div class="header">
+  <c:if test="${not empty sessionScope.user}">
+    <div class="user-info">
+      <span>${sessionScope.user.name} さん</span>
+		<a href="<c:url value='/main/logout-out.jsp'/>">ログアウト</a>
+    </div>
+  </c:if>
+</div>
 </div>
