@@ -10,4 +10,4 @@
 
 <%@include file="/footer.jsp" %>
 
- <a href="/WebContent/index.jsp">メニュー画面へ</a>
+ <a href="<c:url value='../mainmenu.jsp'/>">メニュー画面へ</a>
