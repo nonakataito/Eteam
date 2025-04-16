@@ -1,6 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@include file="/header.jsp" %>
-<%@include file="/menu.jsp" %>
 
 <form action="Login.action" method="post">
 <p>ログイン名　<input type="text" name="login"></p>
