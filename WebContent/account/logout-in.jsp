@@ -3,6 +3,6 @@
 <%@include file="../menu.jsp" %>
 
 <p>ログアウトしますか？</p>
-<p><a href="Logout.action">ログアウト</a></p>
+<a href="/Eteam/account/Logout.action">ログアウト</a>
 
 <%@include file="../footer.jsp" %>
