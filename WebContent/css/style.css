@@ -41,11 +41,14 @@ body {
     overflow-y: auto;
 }
 
+.content {
+    padding-bottom: 50px; /* ← ここが重要 */
+}
+
 /* フッターエリアの中央揃え */
 .footer {
     width: 100%;
     background-color: #ddd;
-    padding: 10px;
     text-align: center;
     position: fixed;
     bottom: 0;

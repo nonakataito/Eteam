@@ -7,8 +7,9 @@
 
 <!-- 左メニューエリア -->
 <div class="menu-container">
-	<h2>メニュー</h2>
 	<ul class="menu-list">
+		<a href="<c:url value='/mainmenu.jsp'/>">メニュー</a>
+		<br>
 		<a href="<c:url value='sample.jsp'/>">学生管理</a>
 		<br>
 		成績管理

@@ -15,6 +15,7 @@
 
 <!-- 上部タイトルエリア -->
 <div class="header-wrapper">
-<h3>得点管理システム</h3>テスト様
-<a href="<c:url value='/sample.jsp'/>">ログアウト</a>
+<h1>得点管理システム</h1>
+<a>テスト 様</a>
+<a href="<c:url value='/account/logout-in.jsp'/>">ログアウト</a>
 </div>
