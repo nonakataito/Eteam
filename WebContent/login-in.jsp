@@ -9,4 +9,4 @@
 
 <%@include file="../footer.jsp" %>
 
- <a href="<c:url value='/main/menu.jsp'/>">メニュー画面へ(移動(仮))</a>
+ <a href="<c:url value='/main/menu.jsp'/>">メニュー画面へ</a>
