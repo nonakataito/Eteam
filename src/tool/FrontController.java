@@ -10,10 +10,10 @@ public class FrontController extends HttpServlet {
         Action handler = null;
 
         switch (action) {
-            case "login":
+            case "Login":
                 handler = new LoginAction();
                 break;
-            case "logout":
+            case "Logout":
                 handler = new LogoutAction();
                 break;
                 /*
