@@ -14,6 +14,7 @@ https://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 <!-- </listener> -->
 
 	<!-- （ここから↓）次の内容をweb.xmlに追加する -->
+
 <!-- <filter> -->
 <!-- <filter-name>hellofilter</filter-name> -->
 <!-- <filter-class>chapter10.HelloFilter</filter-class> -->
