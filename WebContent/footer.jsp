@@ -6,6 +6,4 @@
 <div class="footer">
     <p>&copy; 2023 TIC</p>
     <p>大原学園</p>
-    <p>エラー</p>
-        <p>エラー</p>
 </div>
