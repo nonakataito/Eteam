@@ -1,3 +1,4 @@
+package db;
 public class ScoreDTO {
     private int id;
     private int studentId;
@@ -7,8 +8,8 @@ public class ScoreDTO {
     // getterとsetter
 }
 public interface ScoreDAO {
-    void insertScore(ScoreDTO score);
-    List<ScoreDTO> getScoresByStudent(int studentId);
-    void updateScore(ScoreDTO score);
+    void insertScore(ScoreDAO score);
+    List<ScoreDAO> getScoresByStudent(int studentId);
+    void updateScore(ScoreDAO score);
     void deleteScore(int scoreId);
 }
