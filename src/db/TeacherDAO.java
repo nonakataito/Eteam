@@ -1,12 +1,7 @@
 package db;
-public class TeacherDTO {
-    private int id;
-    private String name;
-    private String subject;
 
-    // getterとsetter
-}
-public interface TeacherDAO {
+import java.util.List;
+public interface TeacherDAO extends DAO{
     void insertTeacher(TeacherDAO teacher);
     TeacherDAO getTeacherById(int id);
     List<TeacherDAO> getAllTeachers();
