@@ -49,7 +49,6 @@ public class SubjectDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return subjects;
     }
 }
