@@ -1,5 +1,5 @@
 package db;
-public class ScoreDAO {
+public class ScoreDTO {
     private int id;
     private int studentId;
     private int subjectId;

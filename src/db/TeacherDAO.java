@@ -1,5 +1,5 @@
 package db;
-public class TeacherDAO {
+public class TeacherDTO {
     private int id;
     private String name;
     private String subject;
