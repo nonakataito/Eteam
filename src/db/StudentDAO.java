@@ -43,7 +43,7 @@ public class StudentDAO {
                     String classNum = rs.getString("CLASS_NUM");
                     boolean isAttend = rs.getBoolean("IS_ATTEND");
                     String schoolCd = rs.getString("SCHOOL_CD");
-
+                    
                     students.add(new Student(no, name, entYear, classNum, isAttend, schoolCd));
                 }
             }
