@@ -1,9 +1,12 @@
 package Account;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import bean.Customer;
 import dao.CustomerDAO;
 import tool.Action;
-import javax.servlet.http.*;
 
 public class LoginAction extends Action {
 	public String execute(
@@ -14,7 +17,7 @@ public class LoginAction extends Action {
 
 		String login=request.getParameter("login");
 		String password=request.getParameter("password");
-
+/*下のCustomerを変える*/
 		CustomerDAO dao=new CustomerDAO();
 		Customer customer=dao.search(login, password);
 
