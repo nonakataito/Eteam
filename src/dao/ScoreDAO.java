@@ -1,4 +1,4 @@
-package db;
+package dao;
 public class ScoreDTO {
     private int id;
     private int studentId;

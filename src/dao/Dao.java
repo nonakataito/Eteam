@@ -1,11 +1,11 @@
-package db;
+package dao;
 
 import java.sql.Connection;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class DAO {
+public class Dao {
     // 🔹 データソース（DataSource）を管理する static 変数
     // → 一度取得したデータソースを再利用することで、効率的に接続を管理
     static DataSource ds;

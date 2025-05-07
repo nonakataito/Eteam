@@ -1,8 +1,8 @@
-package db;
+package dao;
 
 import java.util.List;
 
-import Bean.School;
+import bean.School;
 
 public class SchoolDAO {
 
