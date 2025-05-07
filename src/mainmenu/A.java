@@ -30,7 +30,7 @@ public class A extends HttpServlet {
 		try {
 			InitialContext ic=new InitialContext();
 			DataSource ds=(DataSource)ic.lookup(
-				"java:/comp/env/jdbc/kihatsu");
+				"java:/comp/env/jdbc/kaihatsu");
 			Connection con=ds.getConnection();
 
 			PreparedStatement st=con.prepareStatement(
