@@ -1,21 +1,18 @@
-package bean;
 
-public class Score {
-	public class ClassNum {
-	    private String scoreCd;
-	    private String classNum;
-		public String getscoreCd() {
-			return scoreCd;
+
+		package bean;
+
+public class Test {
+    private Student student;
+    private Subject subject;
+    private int score;
+
+    public Student getStudent() { return student; }
+    public void setStudent(Student student) { this.student = student; }
+
+    public Subject getSubject() { return subject; }
+    public void setSubject(Subject subject) { this.subject = subject; }
+
+    public int getScore() { return score; }
+    public void setScore(int score) { this.score = score; }
 }
-		public String getScoreCd() {
-			return scoreCd;
-		}
-		public void setScoreCd(String scoreCd) {
-			this.scoreCd = scoreCd;
-		}
-		public String getClassNum() {
-			return classNum;
-		}
-		public void setClassNum(String classNum) {
-			this.classNum = classNum;
-		}
