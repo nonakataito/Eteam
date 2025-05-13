@@ -26,7 +26,7 @@ public class Dao {
             InitialContext ic = new InitialContext();
 
             // ③ JNDI からデータソース (`jdbc/book`) を取得し、`ds` に保存
-            ds = (DataSource) ic.lookup("java:comp/env/jdbc/book");
+            ds = (DataSource) ic.lookup("java:comp/env/jdbc/kaihatsu");
         }
 
         // ④ `DataSource` を利用して `Connection` を取得し、呼び出し元に返す

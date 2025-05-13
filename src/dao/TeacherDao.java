@@ -11,7 +11,7 @@ public class TeacherDao extends Dao {
 
     public Teacher login(String id, String password) throws Exception {
         Teacher teacher = null;
-        String sql = "SELECT * FROM teachers WHERE id = ? AND password = ?";
+        String sql = "SELECT * FROM teacher WHERE id = ? AND password = ?";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, id);
             stmt.setString(2, password);
@@ -23,7 +23,7 @@ public class TeacherDao extends Dao {
                 teacher.setName(rs.getString("name"));
 
                 School school = new School();
-                school.setCd(rs.getString("school_cd"));
+                school.setCd(rs.getString("SCHOOL_CD"));
                 teacher.setSchool(school);
             }
         }
