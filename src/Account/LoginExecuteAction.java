@@ -9,7 +9,8 @@ import dao.TeacherDao;
 import tool.Action;
 
 public class LoginExecuteAction extends Action {
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String id = request.getParameter("id");
         String password = request.getParameter("password");
 
@@ -19,9 +20,9 @@ public class LoginExecuteAction extends Action {
         if (teacher != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", teacher);
-            response.sendRedirect("main.jsp");
+            return "/main/menu.jsp";  // フォワード先のパス（変更可能）
         } else {
-            response.sendRedirect("login.jsp?error=true");
+            return "/main/login-error.jsp";
         }
     }
 }
