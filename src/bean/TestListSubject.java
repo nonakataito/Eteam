@@ -3,17 +3,17 @@ package bean;
 import java.util.Map;
 
 public class TestListSubject {
-	private int entYer;
+	private int entYear;
 	private String studentNo;
 	private String studentName;
 	private String classNum;
 	private Map<Integer, Integer> points;
 
 	public int getEnter() {
-		return entYer;
+		return entYear;
 	}
 	public void setEnter(int enter) {
-		this.entYer = enter;
+		this.entYear = enter;
 	}
 	public String getStudentNo() {
 		return studentNo;
