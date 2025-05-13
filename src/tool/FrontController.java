@@ -1,5 +1,4 @@
 package tool;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -8,26 +7,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Account.LoginExecuteAction;
 import Account.LogoutAction;
 import Account.StudentListAction;
 
 @WebServlet("/app")
 public class FrontController extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        process(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        process(request, response);
+    }
+
+    private void process(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");  // 例: login, logout, student_list
+        String action = request.getParameter("action");
 
-        Action handler = null;
+        Action handler;
 
         switch (action) {
             case "login":
-                handler = new LoginAction();
+                handler = new LoginExecuteAction();
                 break;
-                /*もし「action=login」なら、LoginAction というクラスの処理を使うという意味です。
-                他の処理も case を追加していけばOKです。*/
             case "logout":
                 handler = new LogoutAction();
                 break;
@@ -37,16 +47,13 @@ public class FrontController extends HttpServlet {
             case "subject_add":
                 handler = new SubjectAddAction();
                 break;
-            // 他のアクションもここに追加
             default:
                 handler = new UnknownAction();
         }
 
-        if (handler != null) {
-            String nextPage = handler.execute(request, response);
-            if (nextPage != null) {
-                request.getRequestDispatcher(nextPage).forward(request, response);
-            }
+        String nextPage = handler.execute(request, response);
+        if (nextPage != null) {
+            request.getRequestDispatcher(nextPage).forward(request, response);
         }
     }
 }
