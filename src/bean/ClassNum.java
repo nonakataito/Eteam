@@ -15,4 +15,5 @@ public class ClassNum {
 	public void setClass_num(String class_num) {
 		this.class_num = class_num;
 	}
+//	a
 }
