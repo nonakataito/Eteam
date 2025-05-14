@@ -44,4 +44,8 @@ public class Test {
 		public void setPoint(int point) {
 			this.point = point;
 		}
+		public int getTest() {
+			// TODO 自動生成されたメソッド・スタブ
+			return 0;
+		}
 }
