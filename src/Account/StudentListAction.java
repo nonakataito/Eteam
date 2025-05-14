@@ -11,7 +11,7 @@ import dao.StudentDao;
 import tool.Action;
 
 public class StudentListAction extends Action {
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // 仮で固定パラメータを使用
         School school = new School(); school.setCd("001");
         int year = 2021;
