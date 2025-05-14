@@ -1,20 +1,20 @@
 package bean;
 
 public class School {
-	private String cd;
-	private String name;
-	public String getCd() {
-		return cd;
+	private String CD;
+	private String NAME;
+	public String getCD() {
+		return CD;
 	}
-	public void setCd(String cd) {
-		this.cd = cd;
+	public void setCD(String cD) {
+		CD = cD;
 	}
-	public String getName() {
-		return name;
+	public String getNAME() {
+		return NAME;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNAME(String nAME) {
+		NAME = nAME;
 	}
 
-
+	
 }
