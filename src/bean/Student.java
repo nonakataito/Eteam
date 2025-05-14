@@ -3,7 +3,7 @@ package bean;
 public class Student {
     private String no;
     private String name;
-    private int EntYear;
+    private int entYear;
     private boolean isAttend;
     private School school;
     private String classNum;
@@ -21,10 +21,10 @@ public class Student {
 		this.name = name;
 	}
 	public int getEntYear() {
-		return EntYear;
+		return entYear;
 	}
 	public void setEntYear(int entYear) {
-		EntYear = entYear;
+		this.entYear = entYear;
 	}
 	public boolean isAttend() {
 		return isAttend;
@@ -44,6 +44,5 @@ public class Student {
 	public void setClassNum(String classNum) {
 		this.classNum = classNum;
 	}
-
 
 }

@@ -12,33 +12,82 @@ import bean.Student;
 
 public class StudentDao extends Dao {
 
+    private String baseSql = "SELECT * FROM student WHERE school_cd=?";
+
+    public Student get(String no) throws Exception {
+        String sql = "SELECT * FROM student WHERE no=?";
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, no);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Student student = new Student();
+                student.setNo(rs.getString("no"));
+                student.setName(rs.getString("name"));
+                student.setEntYear(rs.getInt("enter_year"));
+                student.setAttend(rs.getBoolean("is_attend"));
+
+                School school = new School();
+                school.setCd(rs.getString("school_cd"));
+                student.setSchool(school);
+
+                ClassNum classNum = new ClassNum();
+                classNum.setClass_num(rs.getString("class_num"));
+                student.setClassNum(classNum);
+
+                return student;
+            }
+        }
+        return null;
+    }
+
     public List<Student> filter(School school, int enterYear, String classNum, boolean isAttend) throws Exception {
-        List<Student> list = new ArrayList<>();
-        String sql = "SELECT * FROM student WHERE school_cd=? AND enter_year=? AND class_num=? AND is_attend=?";
+        String sql = baseSql + " AND enter_year=? AND class_num=? AND is_attend=?";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, school.getCd());
             stmt.setInt(2, enterYear);
             stmt.setString(3, classNum);
             stmt.setBoolean(4, isAttend);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                Student student = new Student();
-                student.setNo(rs.getString("no"));
-                student.setName(rs.getString("name"));
-                student.setEnterYear(rs.getInt("enter_year"));
-                student.setAttend(rs.getBoolean("is_attend"));
+            return postFilter(rs, school);
+        }
+    }
 
-                // 学校とクラス情報をセット
-                School s = new School();
-                s.setCd(rs.getString("school_cd"));
-                student.setSchool(s); // 修正
+    public List<Student> filter(School school, int enterYear, boolean isAttend) throws Exception {
+        String sql = baseSql + " AND enter_year=? AND is_attend=?";
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, school.getCd());
+            stmt.setInt(2, enterYear);
+            stmt.setBoolean(3, isAttend);
+            ResultSet rs = stmt.executeQuery();
+            return postFilter(rs, school);
+        }
+    }
 
-                ClassNum cn = new ClassNum();
-                cn.setClassNum(rs.getString("class_num"));
-                student.setClassNum(cn);
+    public List<Student> filter(School school, boolean isAttend) throws Exception {
+        String sql = baseSql + " AND is_attend=?";
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, school.getCd());
+            stmt.setBoolean(2, isAttend);
+            ResultSet rs = stmt.executeQuery();
+            return postFilter(rs, school);
+        }
+    }
 
-                list.add(student);
-            }
+    public List<Student> postFilter(ResultSet rs, School school) throws Exception {
+        List<Student> list = new ArrayList<>();
+        while (rs.next()) {
+            Student student = new Student();
+            student.setNo(rs.getString("no"));
+            student.setName(rs.getString("name"));
+            student.setEntYear(rs.getInt("enter_year"));
+            student.setAttend(rs.getBoolean("is_attend"));
+            student.setSchool(school);
+
+            ClassNum cn = new ClassNum();
+            cn.setClass_num(rs.getString("class_num"));
+            student.setClassNum(cn);
+
+            list.add(student);
         }
         return list;
     }
@@ -48,8 +97,8 @@ public class StudentDao extends Dao {
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, student.getNo());
             stmt.setString(2, student.getName());
-            stmt.setInt(3, student.getEnterYear());
-            stmt.setString(4, student.getClassNum().getClassNum());
+            stmt.setInt(3, student.getEntYear());
+            stmt.setString(4, student.getClassNum().getClass_Num());
             stmt.setBoolean(5, student.isAttend());
             stmt.setString(6, student.getSchool().getCd());
 
