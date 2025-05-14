@@ -1,19 +1,18 @@
 package bean;
 
 public class ClassNum {
-    private String schoolCd;
-    private String classNum;
-	public String getSchoolCd() {
-		return schoolCd;
+    private School school;
+    private String class_num;
+	public School getSchool() {
+		return school;
 	}
-	public void setSchoolCd(String schoolCd) {
-		this.schoolCd = schoolCd;
+	public void setSchool(School school) {
+		this.school = school;
 	}
-	public String getClassNum() {
-		return classNum;
+	public String getClass_num() {
+		return class_num;
 	}
-	public void setClassNum(String classNum) {
-		this.classNum = classNum;
+	public void setClass_num(String class_num) {
+		this.class_num = class_num;
 	}
-
 }
