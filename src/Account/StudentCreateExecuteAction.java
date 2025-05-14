@@ -1,4 +1,4 @@
-package scoremanager.main;
+package Account;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,11 +10,11 @@ import dao.StudentDao;
 import tool.Action;
 
 public class StudentCreateExecuteAction extends Action {
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // 入力されたパラメータを取得
         String no = request.getParameter("no");
         String name = request.getParameter("name");
-        int enterYear = Integer.parseInt(request.getParameter("enterYear"));
+        int entYear = Integer.parseInt(request.getParameter("enterYear"));
         String classNumStr = request.getParameter("classNum");
         boolean isAttend = Boolean.parseBoolean(request.getParameter("isAttend"));
         String schoolCd = request.getParameter("schoolCd");
@@ -23,7 +23,7 @@ public class StudentCreateExecuteAction extends Action {
         Student student = new Student();
         student.setNo(no);
         student.setName(name);
-        student.setEnterYear(enterYear);
+        student.setEntYear(entYear);
         student.setAttend(isAttend);
 
         School school = new School();
@@ -31,7 +31,7 @@ public class StudentCreateExecuteAction extends Action {
         student.setSchool(school);
 
         ClassNum classNum = new ClassNum();
-        classNum.setClass_num(classNumStr);
+        classNum.setClassNum(classNumStr);
         student.setClassNum(classNum);
 
         // DAOを使って保存
