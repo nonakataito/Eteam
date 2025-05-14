@@ -28,34 +28,33 @@ public class StudentDao extends Dao {
                 student.setEnterYear(rs.getInt("enter_year"));
                 student.setAttend(rs.getBoolean("is_attend"));
 
-                // 学校とクラス情報の取得は省略せず実装
+                // 学校とクラス情報をセット
                 School s = new School();
                 s.setCd(rs.getString("school_cd"));
-                student.setSchool();
+                student.setSchool(s); // 修正
 
                 ClassNum cn = new ClassNum();
-                cn.setClass_num(rs.getString("class_num"));
+                cn.setClassNum(rs.getString("class_num"));
                 student.setClassNum(cn);
 
                 list.add(student);
             }
-            public boolean save(Student student) throws Exception {
-                String sql = "INSERT INTO student (no, name, enter_year, class_num, is_attend, school_cd) VALUES (?, ?, ?, ?, ?, ?)";
-                try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-                    stmt.setString(1, student.getNo());
-                    stmt.setString(2, student.getName());
-                    stmt.setInt(3, student.getEnterYear());
-                    stmt.setString(4, student.getClassNum().getClass_num());
-                    stmt.setBoolean(5, student.isAttend());
-                    stmt.setString(6, student.getSchool().getCd());
-
-                    int result = stmt.executeUpdate();
-                    return result > 0;
-                }
-            }
-
         }
-
         return list;
+    }
+
+    public boolean save(Student student) throws Exception {
+        String sql = "INSERT INTO student (no, name, enter_year, class_num, is_attend, school_cd) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, student.getNo());
+            stmt.setString(2, student.getName());
+            stmt.setInt(3, student.getEnterYear());
+            stmt.setString(4, student.getClassNum().getClassNum());
+            stmt.setBoolean(5, student.isAttend());
+            stmt.setString(6, student.getSchool().getCd());
+
+            int result = stmt.executeUpdate();
+            return result > 0;
+        }
     }
 }
