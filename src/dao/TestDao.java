@@ -12,7 +12,7 @@ public class TestDao extends Dao {
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, test.getStudent().getNo());
             stmt.setString(2, test.getSubject().getCd());
-            stmt.setInt(3, test.getScore());
+            stmt.setInt(3, test.getTest());
 
             int result = stmt.executeUpdate();
             return result > 0;
