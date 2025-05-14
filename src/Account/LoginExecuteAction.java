@@ -17,6 +17,8 @@ public class LoginExecuteAction extends Action {
         TeacherDao dao = new TeacherDao();
         Teacher teacher = dao.login(id, password);
 
+        System.out.println(id);
+        System.out.println(password);
         if (teacher != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", teacher);
