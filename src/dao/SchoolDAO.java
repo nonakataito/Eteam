@@ -1,30 +1,36 @@
 package dao;
-
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import bean.School;
 
-public class SchoolDAO {
+public class SchoolDAO extends Dao{
 
-    public void insert(School school) {
-        // 実装なし
-    }
+    public School get(String cd) throws Exception {
+        School school = null;
 
-    public School findById(String cd) {
-        // 実装なし
-        return null;
-    }
+        // データベース接続
+        Connection con=getConnection();
 
-    public List<School> findAll() {
-        // 実装なし
-        return null;
-    }
+        // SQLで該当の学校コードを探す
+        String sql = "SELECT * FROM school WHERE cd = ?";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1, cd);
 
-    public void update(School school) {
-        // 実装なし
-    }
+        ResultSet rs = st.executeQuery();
 
-    public void delete(String cd) {
-        // 実装なし
+        // 学校データがあればオブジェクトにセット
+        if (rs.next()) {
+            school = new School();
+            school.setCd(rs.getString("cd"));
+            school.setName(rs.getString("name"));
+        }
+
+        rs.close();
+        st.close();
+        con.close();
+
+        return school;
     }
 }
