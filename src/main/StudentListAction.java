@@ -22,5 +22,6 @@ public class StudentListAction extends Action {
         List<Student> list = dao.filter(school, year, classNum, isAttend);
         request.setAttribute("students", list);
         request.getRequestDispatcher("student_list.jsp").forward(request, response);
+		return classNum;
     }
 }
