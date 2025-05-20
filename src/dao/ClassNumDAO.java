@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.ClassNum;
+import bean.School;
 
 public class ClassNumDAO {
 
@@ -42,8 +43,10 @@ public class ClassNumDAO {
 
             if (rs.next()) {
                 result = new ClassNum();
-                result.setSchoolCd(rs.getString("school_cd"));
-                result.setClassNum(rs.getString("class_num"));
+                School school = new School();
+                school.setCd(rs.getString("school_cd"));
+                result.setSchool(school);
+                result.setClass_num(rs.getString("class_num"));
             }
         }
         return result;
