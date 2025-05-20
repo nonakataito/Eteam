@@ -31,7 +31,7 @@ public class StudentCreateExecuteAction extends Action {
         student.setSchool(school);
 
         ClassNum classNum = new ClassNum();
-        classNum.setClassNum(classNumStr);
+        classNum.setClass_num(classNumStr);
         student.setClassNum(classNum);
 
         // DAOを使って保存
