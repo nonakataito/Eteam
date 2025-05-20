@@ -45,5 +45,6 @@ public class StudentCreateExecuteAction extends Action {
             request.setAttribute("error", "登録に失敗しました");
             request.getRequestDispatcher("student_create.jsp").forward(request, response);
         }
+		return schoolCd;
     }
 }
