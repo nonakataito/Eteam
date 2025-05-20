@@ -6,8 +6,7 @@ public class Student {
     private int entYear;
     private boolean isAttend;
     private School school;
-    private String classNum;
-
+    private ClassNum classNum;
 	public String getNo() {
 		return no;
 	}
@@ -38,11 +37,12 @@ public class Student {
 	public void setSchool(School school) {
 		this.school = school;
 	}
-	public String getClassNum() {
+	public ClassNum getClassNum() {
 		return classNum;
 	}
-	public void setClassNum(String classNum) {
+	public void setClassNum(ClassNum classNum) {
 		this.classNum = classNum;
 	}
+
 
 }
