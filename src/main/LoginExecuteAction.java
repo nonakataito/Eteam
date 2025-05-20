@@ -24,7 +24,7 @@ public class LoginExecuteAction extends Action {
             session.setAttribute("user", teacher);
             return "main/menu.jsp";  // フォワード先のパス（変更可能）
         } else {
-            return "error.jsp";
+            return "/main/login-error.jsp";
         }
     }
 }

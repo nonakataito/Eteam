@@ -13,52 +13,55 @@ import javax.servlet.http.HttpServletResponse;
  * フロントコントローラ (Front Controller)
  * すべてのリクエストを一元管理し、適切なアクションクラスを実行する
  */
-@WebServlet(urlPatterns={"*.action"}) // .actionで終わるURLをこのサーブレットで処理
+@WebServlet(urlPatterns = {"*.action"}) // .action で終わるすべてのリクエストを処理
 public class FrontController extends HttpServlet {
 
     /**
      * POSTリクエストの処理
-     * - リクエストのパスを取得し、対応するアクションクラスを動的にロード
-     * - executeメソッドを実行し、戻り値のURLへフォワード
+     * - リクエストされたURLからアクション名を導出し、対応するクラスを実行
      */
-    public void doPost(
-        HttpServletRequest request, HttpServletResponse response
-    ) throws ServletException, IOException {
-    	System.out.println("Frontcontroller!");
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        System.out.println("FrontController POST 処理開始");
+
+        // エラー出力用
         PrintWriter out = response.getWriter();
+
         try {
-            // ① リクエストされたURLのパスを取得
-            String path = request.getServletPath().substring(1);
-            // 例: "/chapter23/Search.action" → "chapter23/Search.action"
+            // ① パス取得: 例 → "/main/LoginExecute.action"
+            String path = request.getServletPath();
 
-            // ② パスをアクションクラス名の形式に変換
-            String name = path.replace(".a", "A").replace('/', '.');
-            // 例: "chapter23/Search.action" → "chapter23.SearchAction"
+            // ② 拡張子 .action を取り除き、"Action" を末尾に追加
+            //     "/main/LoginExecute.action" → "main/LoginExecuteAction"
+            String className = path.substring(1, path.length() - ".action".length()) + "Action";
 
-            // ③ アクションクラスのインスタンスを動的に生成
-            Action action = (Action)Class.forName(name).
-                getDeclaredConstructor().newInstance();
-            // クラスを動的ロードし、コンストラクタを呼び出してインスタンスを作成
+            // ③ パッケージ形式に変換（スラッシュ → ドット）
+            //     "main/LoginExecuteAction" → "main.LoginExecuteAction"
+            className = className.replace('/', '.');
 
-            // ④ executeメソッドを実行し、フォワード先のURLを取得
+            // ④ 動的にアクションクラスをロードしてインスタンス生成
+            Action action = (Action) Class.forName(className)
+                    .getDeclaredConstructor().newInstance();
+
+            // ⑤ executeメソッドを実行 → 遷移先URLを取得
             String url = action.execute(request, response);
-            // 例: "/searchResult.jsp" など
 
-            // ⑤ 指定されたURLへフォワード
+            // ⑥ フォワード
             request.getRequestDispatcher(url).forward(request, response);
 
         } catch (Exception e) {
-            e.printStackTrace(out); // エラー発生時はスタックトレースを出力
+            e.printStackTrace(out); // スタックトレース出力（開発中のみ表示推奨）
         }
     }
 
     /**
      * GETリクエストの処理
-     * - doPostメソッドを呼び出して、POSTリクエストと同じ処理を実行
+     * - POSTと同様の処理を実行
      */
-    public void doGet(
-        HttpServletRequest request, HttpServletResponse response
-    ) throws ServletException, IOException {
-        doPost(request, response); // GETリクエストもPOSTと同様に処理
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request, response);
     }
 }
