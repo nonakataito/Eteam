@@ -24,8 +24,8 @@ public class ClassNumDAO {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, classNum.getSchoolCd());
-            stmt.setString(2, classNum.getClassNum());
+            stmt.setString(1, classNum.getSchool().getCd());
+            stmt.setString(2, classNum.getClass_num());
             stmt.executeUpdate();
         }
     }
@@ -62,8 +62,9 @@ public class ClassNumDAO {
 
             while (rs.next()) {
                 ClassNum cn = new ClassNum();
-                cn.setSchoolCd(rs.getString("school_cd"));
-                cn.setClassNum(rs.getString("class_num"));
+                School school = new School();
+                cn.setSchool(school);
+                cn.setClass_num(rs.getString("class_num"));
                 list.add(cn);
             }
         }
@@ -76,8 +77,8 @@ public class ClassNumDAO {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, classNum.getClassNum());
-            stmt.setString(2, classNum.getSchoolCd());
+            stmt.setString(1, classNum.getClass_num());
+            stmt.setString(2, classNum.getSchool().getCd());
             stmt.executeUpdate();
         }
     }
