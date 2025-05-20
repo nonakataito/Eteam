@@ -19,6 +19,8 @@ public class LoginExecuteAction extends Action {
 
         System.out.println(id);
         System.out.println(password);
+
+
         if (teacher != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", teacher);

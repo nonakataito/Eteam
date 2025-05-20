@@ -13,6 +13,7 @@ import bean.ClassNum;
 import bean.School;
 
 public class ClassNumDAO {
+//	dao
 
     private final String JDBC_URL = "jdbc:mysql://localhost:3306/your_database";
     private final String DB_USER = "your_username";
