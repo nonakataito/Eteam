@@ -8,7 +8,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/scoremanager/css/style.css'/>">
 
 </head>
 
