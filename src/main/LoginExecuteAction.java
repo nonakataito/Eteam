@@ -1,4 +1,4 @@
-package scoremanager;
+package main;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,9 +24,10 @@ public class LoginExecuteAction extends Action {
         if (teacher != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", teacher);
-            return "/scoremanager/main/menu.jsp";  // フォワード先のパス（変更可能）
+            return "/main/menu.jsp";  // フォワード先のパス（変更可能）
         } else {
-            return "/scoremanager/main/login-error.jsp";
+            return "/main/login-error.jsp";
         }
     }
 }
+

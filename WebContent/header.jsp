@@ -8,7 +8,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/scoremanager/css/style.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css'/>">
 
 </head>
 
@@ -20,7 +20,7 @@
   <c:if test="${not empty sessionScope.user}">
     <div class="user-info">
       <span>${sessionScope.user.name} さん</span>
-		<a href="<c:url value='/main/logout.jsp'/>">ログアウト</a>
+    <a href="<c:url value='/main/logout.jsp'/>">ログアウト</a>
     </div>
   </c:if>
 </div>
