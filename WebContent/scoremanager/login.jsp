@@ -7,7 +7,7 @@
 <p><input type="submit" value="ログイン"></p>
 </form>
 
-<%@include file="../footer.jsp" %>
+<%@include file="/scoremanager/footer.jsp" %>
 
  <a href="<c:url value='/main/menu.jsp'/>">メニュー画面へ</a>
 
