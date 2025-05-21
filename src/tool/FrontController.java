@@ -44,7 +44,7 @@ public class FrontController extends HttpServlet {
             Action action = (Action) Class.forName(className)
                     .getDeclaredConstructor().newInstance();
 
-            // ⑤ executeメソッドを実行 → 遷移先URLを取得
+            // ⑤ executeメソッドを実行 → 遷移先URLを取
             String url = action.execute(request, response);
 
             // ⑥ フォワード
