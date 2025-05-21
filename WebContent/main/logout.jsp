@@ -5,4 +5,4 @@
 
 <%@include file="../footer.jsp" %>
 
-<a href="<c:url value='/login-in.jsp'/>">ログイン</a>
+<a href="<c:url value='/login.jsp'/>">ログイン</a>
