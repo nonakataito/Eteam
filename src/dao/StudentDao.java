@@ -42,7 +42,7 @@ public class StudentDao extends Dao {
     }
 
     public List<Student> filter(School school, int enterYear, String classNum, boolean isAttend) throws Exception {
-        String sql = baseSql + " AND enter_year=? AND class_num=? AND is_attend=?";
+    	String sql = "SELECT * FROM student WHERE school_cd=? AND ent_year=? AND class_num=? AND is_attend=?";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, school.getCd());
             stmt.setInt(2, enterYear);
