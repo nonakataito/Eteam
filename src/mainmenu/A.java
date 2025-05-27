@@ -24,7 +24,7 @@ public class A extends HttpServlet {
 		// UTF-8 を設定
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-
+//        k
 		PrintWriter out=response.getWriter();
 		Page.header(out);
 		try {
