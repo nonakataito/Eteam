@@ -21,4 +21,3 @@
 		<a href="<c:url value='sample.jsp'/>">科目管理</a>
 	</ul>
 </div>
-<!-- -->
