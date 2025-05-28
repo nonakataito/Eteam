@@ -25,6 +25,7 @@
             <option value="201">201</option>
             <option value="202">202</option>
 		</select>
+
 		<label>在学中</label>
 		<input type="checkbox" name="f3" value="on" />
 
