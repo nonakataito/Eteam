@@ -28,7 +28,6 @@
 
 		<label>在学中</label>
 		<input type="checkbox" name="f3" value="on" />
-
 		<button type="submit">絞り込み</button>
 
 <div>
