@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//ｓ
 import bean.School;
 import bean.Student;
 import dao.StudentDao;
@@ -20,6 +19,11 @@ public class StudentListAction extends Action {
 
         // ログイン中の学校を取得（セッションに保持されている想定）
         School school = (School) request.getSession().getAttribute("school");
+
+        // school が null（セッション切れなど）の場合はログイン画面へ戻す
+        if (school == null) {
+            return "/login.jsp";
+        }
 
         // チェックボックス「在学中」→ true/false に変換
         boolean isAttend = "on".equals(attendStr);
