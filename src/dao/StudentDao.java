@@ -107,4 +107,13 @@ public class StudentDao extends Dao {
             return result > 0;
         }
     }
+
+    public List<Student> findAll(School school) throws Exception {
+        String sql = baseSql; // school_cd だけで絞る
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, school.getCd());
+            ResultSet rs = stmt.executeQuery();
+            return postFilter(rs, school);
+        }
+    }
 }
