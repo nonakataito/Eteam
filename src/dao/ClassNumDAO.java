@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +12,16 @@ import bean.ClassNum;
 import bean.School;
 
 public class ClassNumDAO {
-//	dao
 
-    private final String JDBC_URL = "jdbc:mysql://localhost:3306/your_database";
-    private final String DB_USER = "your_username";
-    private final String DB_PASSWORD = "your_password";
+    private Connection getConnection() throws Exception {
+        Class.forName("org.h2.Driver");
+        return DriverManager.getConnection("jdbc:h2:~/kaihatsu", "sa", "");
+    }
 
-    public void insert(ClassNum classNum) throws SQLException {
+    public void insert(ClassNum classNum) throws Exception {
         String sql = "INSERT INTO class_num (school_cd, class_num) VALUES (?, ?)";
 
-        try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
+        try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, classNum.getSchool().getCd());
@@ -31,11 +30,11 @@ public class ClassNumDAO {
         }
     }
 
-    public ClassNum findById(String schoolCd, String classNumVal) throws SQLException {
+    public ClassNum findById(String schoolCd, String classNumVal) throws Exception {
         String sql = "SELECT * FROM class_num WHERE school_cd = ? AND class_num = ?";
         ClassNum result = null;
 
-        try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
+        try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, schoolCd);
@@ -53,17 +52,18 @@ public class ClassNumDAO {
         return result;
     }
 
-    public List<ClassNum> findAll() throws SQLException {
+    public List<ClassNum> findAll() throws Exception {
         String sql = "SELECT * FROM class_num";
         List<ClassNum> list = new ArrayList<>();
 
-        try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
+        try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
                 ClassNum cn = new ClassNum();
                 School school = new School();
+                school.setCd(rs.getString("school_cd")); // ← 忘れずに
                 cn.setSchool(school);
                 cn.setClass_num(rs.getString("class_num"));
                 list.add(cn);
@@ -72,10 +72,10 @@ public class ClassNumDAO {
         return list;
     }
 
-    public void update(ClassNum classNum) throws SQLException {
+    public void update(ClassNum classNum) throws Exception {
         String sql = "UPDATE class_num SET class_num = ? WHERE school_cd = ?";
 
-        try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
+        try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, classNum.getClass_num());
@@ -84,10 +84,10 @@ public class ClassNumDAO {
         }
     }
 
-    public void delete(String schoolCd, String classNumVal) throws SQLException {
+    public void delete(String schoolCd, String classNumVal) throws Exception {
         String sql = "DELETE FROM class_num WHERE school_cd = ? AND class_num = ?";
 
-        try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
+        try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, schoolCd);
