@@ -31,7 +31,7 @@
     </select>
 <button type="button"name="end">登録をして終了</button>
  <a href="<c:url value='/main/student_create_done'/>"></a>
- <a href="<c:url value='/student_list'/>">戻る</a>
+ <a href="../main/student_list.jsp">戻る</a>
 
 
 </body>
