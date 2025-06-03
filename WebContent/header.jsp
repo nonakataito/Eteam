@@ -17,7 +17,10 @@
             <!-- ログインしている場合のみ表示 -->
             <div class="user-info">
                 <span>${sessionScope.user.name} さん</span>
-                <a href="<c:url value='/main/logout.jsp'/>">ログアウト</a>
+				<form action="<c:url value='/main/Logout.action' />" method="post">
+				    <input type="submit" value="ログアウト">
+				</form>
+
             </div>
         </c:if>
     </div>

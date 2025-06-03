@@ -13,9 +13,9 @@ public class LogoutAction extends Action {
 
 		HttpSession session=request.getSession();
 
-		if (session.getAttribute("id")!=null) {
-			session.removeAttribute("id");
-			return "logout-out.jsp";
+		if (session.getAttribute("user")!=null) {
+			session.removeAttribute("user");
+			return "logout.jsp";
 		}
 
 		return "logout-error.jsp";

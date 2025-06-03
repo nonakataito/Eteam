@@ -42,7 +42,7 @@
     <tr>
       <td colspan="2">
         <input type="submit" value="変更">
-        <a href="/Eteam/main/StudentUpdate.action">戻る</a>
+        <a href="../main/student_list.jsp"">戻る</a>
       </td>
     </tr>
   </table>
