@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h2>学生情報登録</h2>
+<label>登録が完了しました</label>
 
-</body>
+<a href="../main/student_create.jsp">戻る</a>
+<a href="../main/student_list.jsp">学生一覧</a>
 </html>
