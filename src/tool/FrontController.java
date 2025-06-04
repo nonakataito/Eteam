@@ -30,15 +30,22 @@ public class FrontController extends HttpServlet {
 
         try {
             // ① パス取得: 例 → "/main/LoginExecute.action"
-            String path = request.getServletPath();
+            String path = request.getServletPath().substring(1, request.getServletPath().length() - ".action".length());
+
+
+         // スラッシュの位置でパッケージとクラス名を分割
+	         int slash = path.lastIndexOf('/');
+	         String packageName = path.substring(0, slash); // "main"
+	         String classBase = path.substring(slash + 1);  // "studentCreateExecute"
+
+	         // クラス名の先頭を大文字に変換 → "StudentCreateExecute"
+	         String className = packageName + "." + classBase.substring(0, 1).toUpperCase() + classBase.substring(1) + "Action";
+
+	         // → "main.StudentCreateExecuteAction"
 
             // ② 拡張子 .action を取り除き、"Action" を末尾に追加
-            //     "/main/LoginExecute.action" → "main/LoginExecuteAction"
-            String className = path.substring(1, path.length() - ".action".length()) + "Action";
+            //     "/main/LoginExecute.action" → "main/LoginExecuteAction"            String className = path.substring(1, path.length() - ".action".length()) + "Action";
 
-            // ③ パッケージ形式に変換（スラッシュ → ドット）
-            //     "main/LoginExecuteAction" → "main.LoginExecuteAction"
-            className = className.replace('/', '.');
 
             // ④ 動的にアクションクラスをロードしてインスタンス生成
             Action action = (Action) Class.forName(className)
@@ -46,6 +53,13 @@ public class FrontController extends HttpServlet {
 
             // ⑤ executeメソッドを実行 → 遷移先URLを取得
             String url = action.execute(request, response);
+
+            if (url.startsWith("redirect:")) {
+                response.sendRedirect(url.substring("redirect:".length()));
+            } else {
+                request.getRequestDispatcher(url).forward(request, response);
+            }
+
 
             // ⑥ フォワード
             request.getRequestDispatcher(url).forward(request, response);

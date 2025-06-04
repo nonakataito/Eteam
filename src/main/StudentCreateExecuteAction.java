@@ -15,7 +15,7 @@ public class StudentCreateExecuteAction extends Action {
         // 入力されたパラメータを取得
         String no = request.getParameter("no");
         String name = request.getParameter("name");
-        int entYear = Integer.parseInt(request.getParameter("enteryear"));
+        int entYear = Integer.parseInt(request.getParameter("ent_year"));
         String classNumStr = request.getParameter("class_num");
         boolean isAttend = Boolean.parseBoolean(request.getParameter("isAttend"));
         String schoolCd = request.getParameter("schoolCd");
@@ -41,12 +41,10 @@ public class StudentCreateExecuteAction extends Action {
 
         // 結果に応じて画面遷移
         if (result) {
-            response.sendRedirect("student_list.jsp");
-            return null;
+            return "redirect:student_list.jsp";
         } else {
             request.setAttribute("error", "登録に失敗しました");
-            request.getRequestDispatcher("student_create.jsp").forward(request, response);
+            return "forward:student_student_create.jsp";
         }
-		return schoolCd;
     }
 }

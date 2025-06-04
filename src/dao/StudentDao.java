@@ -54,7 +54,7 @@ public class StudentDao extends Dao {
     }
 
     public List<Student> filter(School school, int enterYear, boolean isAttend) throws Exception {
-        String sql = baseSql + " AND enter_year=? AND is_attend=?";
+        String sql = baseSql + " AND ent_year=? AND is_attend=?";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, school.getCd());
             stmt.setInt(2, enterYear);
@@ -80,7 +80,7 @@ public class StudentDao extends Dao {
             Student student = new Student();
             student.setNo(rs.getString("no"));
             student.setName(rs.getString("name"));
-            student.setEntYear(rs.getInt("enter_year"));
+            student.setEntYear(rs.getInt("ent_year"));
             student.setAttend(rs.getBoolean("is_attend"));
             student.setSchool(school);
 
@@ -94,7 +94,7 @@ public class StudentDao extends Dao {
     }
 
     public boolean save(Student student) throws Exception {
-        String sql = "INSERT INTO student (no, name, enter_year, class_num, is_attend, school_cd) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO student (no, name, ent_year, class_num, is_attend, school_cd) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, student.getNo());
             stmt.setString(2, student.getName());
