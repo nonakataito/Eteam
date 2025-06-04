@@ -11,7 +11,7 @@
 	</head>
 	<body>
 	<h2>学生情報登録</h2>
-<form action="studentCreateExecute.do" method="post">
+<form action="StudentCreateExecute.action" method="post">
 	<label>入学年度</label>
 	<select name="ent_year">
 		<c:forEach var="year" begin="2015" end="2035">
