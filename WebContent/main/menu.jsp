@@ -16,7 +16,7 @@
             <!-- 横並び -->
             <a href="<c:url value='/main/student_list.jsp'/>">学生管理</a>
             <a href="<c:url value='/sample.jsp'/>">成績管理</a>
-            <a href="<c:url value='/sample.jsp'/>">科目管理</a>
+            <a href="SubjectList.action">科目管理</a>
 
             <!-- 改行してインデント -->
             <br>&emsp;&emsp;&emsp;
