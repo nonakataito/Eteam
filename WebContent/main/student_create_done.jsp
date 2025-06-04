@@ -11,5 +11,5 @@
 <label>登録が完了しました</label>
 
 <a href="../main/student_create.jsp">戻る</a>
-<a href="../main/student_list.jsp">学生一覧</a>
+<a href="StudentList.action">学生一覧</a>
 </html>

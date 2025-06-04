@@ -36,9 +36,6 @@
 	<button type="submit"name="end">登録をして終了</button>
 </form>
 
- <a href="<c:url value='/main/student_create_done.jsp'/>"></a>
- <a href="../main/student_create_done.jsp">登録(間違ってる)</a>
-
  <a href="../main/student_list.jsp">戻る</a>
 
 
