@@ -74,6 +74,19 @@ public class StudentDao extends Dao {
         }
     }
 
+ // クラスのみでフィルタ
+    public List<Student> filter(School school, String classNum, boolean isAttend) throws Exception {
+        String sql = baseSql + " AND class_num=? AND is_attend=?";
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, school.getCd());
+            stmt.setString(2, classNum);
+            stmt.setBoolean(3, isAttend);
+            ResultSet rs = stmt.executeQuery();
+            return postFilter(rs, school);
+        }
+    }
+
+
     public List<Student> postFilter(ResultSet rs, School school) throws Exception {
         List<Student> list = new ArrayList<>();
         while (rs.next()) {
@@ -115,6 +128,7 @@ public class StudentDao extends Dao {
             ResultSet rs = stmt.executeQuery();
             return postFilter(rs, school);
         }
+
     }
 }
 

@@ -11,37 +11,36 @@ import dao.StudentDao;
 import tool.Action;
 
 public class StudentListAction extends Action {
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        // パラメータ取得
-        String entYearStr = request.getParameter("f1");
-        String classNum = request.getParameter("f2");
-        String attendStr = request.getParameter("f3");
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	    String entYearStr = request.getParameter("f1");
+	    String classNum = request.getParameter("f2");
+	    String attendStr = request.getParameter("f3");
 
-        // ログイン中の学校を取得（セッションに保持されている想定）
-        School school = (School) request.getSession().getAttribute("school");
+	    School school = (School) request.getSession().getAttribute("school");
+	    if (school == null) {
+	        return "/login.jsp";
+	    }
 
-        // school が null（セッション切れなど）の場合はログイン画面へ戻す
-        if (school == null) {
-            return "/login.jsp";
-        }
+	    boolean isAttend = "on".equals(attendStr);
+	    StudentDao dao = new StudentDao();
+	    List<Student> studentList;
 
-        // チェックボックス「在学中」→ true/false に変換
-        boolean isAttend = "on".equals(attendStr);
+	    boolean hasEntYear = entYearStr != null && !entYearStr.isEmpty();
+	    boolean hasClassNum = classNum != null && !classNum.isEmpty();
 
-        StudentDao dao = new StudentDao();
-        List<Student> studentList;
+	    if (hasEntYear && hasClassNum) {
+	        int entYear = Integer.parseInt(entYearStr);
+	        studentList = dao.filter(school, entYear, classNum, isAttend);
+	    } else if (hasEntYear) {
+	        int entYear = Integer.parseInt(entYearStr);
+	        studentList = dao.filter(school, entYear, isAttend);
+	    } else if (hasClassNum) {
+	        studentList = dao.filter(school, classNum, isAttend); // ← 新しく追加したメソッド
+	    } else {
+	        studentList = dao.filter(school, isAttend);
+	    }
 
-        if (entYearStr != null && classNum != null && !entYearStr.isEmpty() && !classNum.isEmpty()) {
-            int entYear = Integer.parseInt(entYearStr);
-            studentList = dao.filter(school, entYear, classNum, isAttend);
-        } else if (entYearStr != null && !entYearStr.isEmpty()) {
-            int entYear = Integer.parseInt(entYearStr);
-            studentList = dao.filter(school, entYear, isAttend);
-        } else {
-            studentList = dao.filter(school, isAttend);
-        }
-
-        request.setAttribute("studentList", studentList);
-        return "/main/student_list.jsp";
-    }
+	    request.setAttribute("studentList", studentList);
+	    return "/main/student_list.jsp";
+	}
 }
