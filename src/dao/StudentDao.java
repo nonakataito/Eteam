@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import bean.ClassNum;
 import bean.School;
 import bean.Student;
@@ -74,19 +78,6 @@ public class StudentDao extends Dao {
         }
     }
 
- // クラスのみでフィルタ
-    public List<Student> filter(School school, String classNum, boolean isAttend) throws Exception {
-        String sql = baseSql + " AND class_num=? AND is_attend=?";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, school.getCd());
-            stmt.setString(2, classNum);
-            stmt.setBoolean(3, isAttend);
-            ResultSet rs = stmt.executeQuery();
-            return postFilter(rs, school);
-        }
-    }
-
-
     public List<Student> postFilter(ResultSet rs, School school) throws Exception {
         List<Student> list = new ArrayList<>();
         while (rs.next()) {
@@ -128,8 +119,30 @@ public class StudentDao extends Dao {
             ResultSet rs = stmt.executeQuery();
             return postFilter(rs, school);
         }
+    }
+    public boolean update(Student student) {
+        try {
+            Context initCtx = new InitialContext();
+            DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/kaihatsu");
 
+            try (Connection conn = ds.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(
+                     "UPDATE student SET name = ? WHERE class_num = ? AND is_attend = ? AND no = ? AND school_cd = ?")) {
+
+                stmt.setString(1, student.getName());
+                stmt.setString(2, student.getClassNum().getClass_num());
+                stmt.setBoolean(3, student.isAttend());
+                stmt.setString(4, student.getNo());
+                stmt.setString(5, student.getSchool().getCd());
+
+                int rows = stmt.executeUpdate();
+                return rows > 0;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
-//h
 
