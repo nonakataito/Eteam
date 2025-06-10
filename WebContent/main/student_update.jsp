@@ -15,10 +15,13 @@
       <td><label>入学年度</label></td>
       <td>${student.entYear}</td>
     </tr>
-    <tr>
-      <td><label>学生番号</label></td>
-      <td>${student.no}</td>
-    </tr>
+	<tr>
+	  <td><label>学生番号</label></td>
+	  <td>
+	    ${student.no}
+	    <input type="hidden" name="no" value="${student.no}">
+	  </td>
+	</tr>
     <tr>
       <td><label>氏名</label></td>
       <td><input type="text" name="name" value="${student.name}" maxlength="30" required></td>

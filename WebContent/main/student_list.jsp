@@ -40,7 +40,14 @@
         </div>
 
         <table border="1">
-            <tr><th>入学年度</th><th>学籍番号</th><th>氏名</th><th>クラス</th><th>在学中</th></tr>
+            <tr>
+	            <th>入学年度</th>
+	            <th>学籍番号</th>
+	            <th>氏名</th>
+	            <th>クラス</th>
+	            <th>在学中</th>
+	            <th>変更</th>
+            </tr>
             <c:forEach var="s" items="${studentList}">
                 <tr>
                     <td>${s.entYear}</td>
@@ -51,6 +58,9 @@
                         <c:when test="${s.attend}">○</c:when>
                         <c:otherwise>×</c:otherwise>
                     </c:choose></td>
+                    <td>
+					<a href="<c:url value='/main/StudentUpdate.action?no=${s.no}'/>">変更</a>
+					</td>
                 </tr>
             </c:forEach>
         </table>
