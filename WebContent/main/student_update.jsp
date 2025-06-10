@@ -9,7 +9,7 @@
 <!-- 単一学生の編集フォーム -->
 
 
-<form action="/Eteam/main/StudentUpdate.action" method="post">
+<form action="/Eteam/main/StudentUpdateExecute.action" method="post">
   <table>
     <tr>
       <td><label>入学年度</label></td>
@@ -42,7 +42,7 @@
     <tr>
       <td colspan="2">
         <input type="submit" value="変更">
-        <a href="../main/student_list.jsp">戻る</a>
+        <a href="StudentList.action">戻る</a>
       </td>
     </tr>
   </table>

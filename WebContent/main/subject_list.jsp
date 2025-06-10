@@ -5,48 +5,43 @@
 <html>
 <head>
     <title>科目管理画面</title>
+    <link rel="stylesheet" href="css/subject.css">
 </head>
 <body>
 <div class="main-container">
-	<div class="menu-wrapper">
-    <%@ include file="../side.jsp" %>
+    <div class="menu-wrapper">
+        <%@ include file="../side.jsp" %>
     </div>
 
-    <!-- 1. 画面タイトル -->
-    <h2>科目管理</h2>
+    <div class="subject-table-wrapper">
+        <h2>科目管理</h2>
 
-    <!-- 2. 新規登録リンク -->
-    <a href="subjectRegister.jsp" onclick="event41()">新規登録</a>
+        <div class="new-register">
+            <a href="subjectRegister.jsp" onclick="event41()">新規登録</a>
+        </div>
 
-    <!-- 3. 科目一覧テーブル -->
-    <table border="1">
-        <thead>
-            <tr>
-                <!-- 4. ヘッダ(科目コード) -->
-                <th>科目コード</th>
-                <!-- 5. ヘッダ(科目名) -->
-                <th>科目名</th>
-                <th>操作</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- 追加: subjectList をループして表示 -->
-            <c:forEach var="subject" items="${subjectList}">
+        <table>
+            <thead>
                 <tr>
-                    <!-- 6. 科目情報(科目コード) -->
-                    <td><c:out value="${subject.cd}" /></td>
-                    <!-- 7. 科目情報(科目名) -->
-                    <td><c:out value="${subject.name}" /></td>
-                    <td>
-                        <!-- 8. 科目情報変更リンク -->
-                        <a href="/Eteam/main/SubjectUpdate.action?code=${subject.cd}" onclick="event42()">変更</a>
-                        <!-- 9. 科目情報削除リンク -->
-                        <a href="subjectDelete.jsp?code=${subject.cd}" onclick="event43()">削除</a>
-                    </td>
+                    <th>科目コード</th>
+                    <th>科目名</th>
+                    <th>操作</th>
                 </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <c:forEach var="subject" items="${subjectList}">
+                    <tr>
+                        <td><c:out value="${subject.cd}" /></td>
+                        <td><c:out value="${subject.name}" /></td>
+                        <td>
+                            <a class="action-link" href="/Eteam/main/SubjectUpdate.action?code=${subject.cd}" onclick="event42()">変更</a>
+                            <a class="action-link" href="subjectDelete.jsp?code=${subject.cd}" onclick="event43()">削除</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script>
