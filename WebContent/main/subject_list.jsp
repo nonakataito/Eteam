@@ -35,7 +35,7 @@
                         <td><c:out value="${subject.name}" /></td>
                         <td>
                             <a class="action-link" href="/Eteam/main/SubjectUpdate.action?code=${subject.cd}" onclick="event42()">変更</a>
-                            <a class="action-link" href="subjectDelete.jsp?code=${subject.cd}" onclick="event43()">削除</a>
+                            <a class="action-link" href="/Eteam/main/SubjectDelete.action?code=${subject.cd}" onclick="event43()">削除</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -44,17 +44,7 @@
     </div>
 </div>
 
-<script>
-    function event41() {
-        console.log("イベント41: 新規登録リンク押下");
-    }
-    function event42() {
-        console.log("イベント42: 科目変更リンク押下");
-    }
-    function event43() {
-        console.log("イベント43: 科目削除リンク押下");
-    }
-</script>
+
 
 <%@ include file="../footer.jsp" %>
 </body>

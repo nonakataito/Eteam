@@ -105,4 +105,28 @@ public class SubjectDAO {
             return false;
         }
     }
+
+ // 科目削除処理
+    public boolean delete(String code, String schoolCd) {
+        try {
+            Context initCtx = new InitialContext();
+            DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/kaihatsu");
+
+            try (Connection conn = ds.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(
+                     "DELETE FROM SUBJECT WHERE SCHOOL_CD = ? AND CD = ?")) {
+
+                stmt.setString(1, schoolCd);
+                stmt.setString(2, code);
+
+                int rows = stmt.executeUpdate();
+                return rows > 0;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
