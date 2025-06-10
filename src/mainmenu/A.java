@@ -25,11 +25,11 @@ public class A extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
 //        k
-        
-        
-        
-        
-       
+        //h
+
+
+
+
 		PrintWriter out=response.getWriter();
 		Page.header(out);
 		try {
