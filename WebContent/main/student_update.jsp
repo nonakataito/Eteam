@@ -19,7 +19,9 @@
 	  <td><label>学生番号</label></td>
 	  <td>
 	    ${student.no}
-	    <input type="hidden" name="no" value="${student.no}">
+		<input type="hidden" name="school_cd" value="${student.school.cd}">
+
+
 	  </td>
 	</tr>
     <tr>

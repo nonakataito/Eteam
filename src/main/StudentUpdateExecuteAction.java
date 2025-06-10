@@ -4,41 +4,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.ClassNum;
+import bean.School;
 import bean.Student;
 import dao.StudentDao;
 import tool.Action;
 
 public class StudentUpdateExecuteAction extends Action {
 
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        // パラメータの取得
-        String no = request.getParameter("no");
-        String name = request.getParameter("name");
-        String classNum = request.getParameter("class_num");
-        String isAttendParam = request.getParameter("is_attend");
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	    // パラメータの取得
+	    String no = request.getParameter("no");
+	    String name = request.getParameter("name");
+	    String classNum = request.getParameter("class_num");
+	    String isAttendParam = request.getParameter("is_attend");
+	    String schoolCd = request.getParameter("school_cd");
 
-        boolean isAttend = (isAttendParam != null);
+	    boolean isAttend = (isAttendParam != null);
 
-        // 学生オブジェクトの作成
-        Student student = new Student();
-        student.setNo(no);
-        student.setName(name);
+	    // 学生オブジェクトの作成
+	    School school = new School();
+	    school.setCd(schoolCd);
 
-        ClassNum cn = new ClassNum();
-        cn.setClass_num(classNum);
-        student.setClassNum(cn);
+	    Student student = new Student();
+	    student.setNo(no);
+	    student.setName(name);
 
-        student.setAttend(isAttend);
+	    ClassNum cn = new ClassNum();
+	    cn.setClass_num(classNum);
+	    student.setClassNum(cn);
 
-        // 更新処理
-        StudentDao dao = new StudentDao();
-        dao.update(student);
+	    student.setAttend(isAttend);
+	    student.setSchool(school);  // ← student を生成した後にセット！
 
-        // 完了メッセージなど必要ならここで設定
-        request.setAttribute("message", "学生情報を更新しました。");
+	    // 更新処理
+	    StudentDao dao = new StudentDao();
+	    dao.update(student);
 
-        // リダイレクトまたは転送先
-        return "redirect:StudentList.action";
-    }
+	    request.setAttribute("message", "学生情報を更新しました。");
+
+	    return "redirect:StudentList.action";
+	}
 }

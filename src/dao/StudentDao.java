@@ -120,6 +120,7 @@ public class StudentDao extends Dao {
             return postFilter(rs, school);
         }
     }
+
     public boolean update(Student student) {
         try {
             Context initCtx = new InitialContext();
@@ -127,7 +128,7 @@ public class StudentDao extends Dao {
 
             try (Connection conn = ds.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(
-                     "UPDATE student SET name = ? WHERE class_num = ? AND is_attend = ? AND no = ? AND school_cd = ?")) {
+                     "UPDATE student SET name = ?, class_num = ?, is_attend = ? WHERE no = ? AND school_cd = ?")) {
 
                 stmt.setString(1, student.getName());
                 stmt.setString(2, student.getClassNum().getClass_num());
@@ -136,15 +137,16 @@ public class StudentDao extends Dao {
                 stmt.setString(5, student.getSchool().getCd());
 
                 int rows = stmt.executeUpdate();
+                System.out.println("更新件数: " + rows);  // ← 追加
                 return rows > 0;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-//            aaa
         }
     }
+
  // 学校・クラス番号・在籍フラグで検索するフィルタ
     public List<Student> filter(School school, String classNum, boolean isAttend) throws Exception {
         String sql = baseSql + " AND class_num=? AND is_attend=?";
@@ -156,5 +158,7 @@ public class StudentDao extends Dao {
             return postFilter(rs, school);
         }
     }
+
+
 }
 
