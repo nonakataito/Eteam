@@ -36,10 +36,10 @@ public class SubjectUpdateExecuteAction extends Action {
         boolean success = dao.update(subject);
 
         if (success) {
-            return "subject_update_complete.jsp"; // 完了画面へ
+            return "/main/subject_update_done.jsp"; // 完了画面へ
         } else {
             request.setAttribute("error", "データベース更新に失敗しました。");
-            return "subject_update.jsp"; // エラー時は入力画面へ戻す
+            return "error.jsp"; // エラー時は入力画面へ戻す
         }
     }
 }

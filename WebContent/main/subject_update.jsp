@@ -24,7 +24,7 @@
     <h2>科目変更</h2>
 
     <!-- 変更用フォーム -->
-    <form action="/Eteam/main/SubjectUpdate.action" method="post">
+    <form action="/Eteam/main/SubjectUpdateExecute.action" method="post">
         <!-- 科目コード -->
         <label for="cd">科目コード</label>
         <input type="text" id="cd" name="cd" value="${subject.cd}" readonly />

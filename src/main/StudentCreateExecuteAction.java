@@ -41,7 +41,7 @@ public class StudentCreateExecuteAction extends Action {
 
         // 結果に応じて画面遷移
         if (result) {
-            return "redirect:student_create_done.jsp";
+            return "redirect:student_list.jsp";
         } else {
             request.setAttribute("error", "登録に失敗しました");
             return "forward:student_student_create.jsp";
