@@ -36,7 +36,7 @@
 	<button type="submit"name="end">登録をして終了</button>
 </form>
 
- <a href="../main/student_list.jsp">戻る</a>
+ <a href="StudentList.action">戻る</a>
 
 
 </body>
