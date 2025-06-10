@@ -10,20 +10,17 @@ import tool.Action;
 
 public class SubjectDeleteAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        // セッションから学校情報を取得
+        // パラメータ取得
+        String cd = request.getParameter("code");
+
+        // ログイン中の学校情報を取得（セッションから）
         School school = (School) request.getSession().getAttribute("school");
-        if (school == null) {
-            return "/login.jsp";
-        }
 
-        // リクエストパラメータから科目コードを取得
-        String subjectCd = request.getParameter("subject_cd");
-
-        // DAOを使って該当の科目情報を取得
+        // DAOで科目情報を取得
         SubjectDAO dao = new SubjectDAO();
-        Subject subject = dao.findByCodeAndSchoolCd(subjectCd, school.getCd());
+        Subject subject = dao.findByCodeAndSchoolCd(cd, school.getCd());
 
-        // 該当の科目情報をリクエストに設定
+        // リクエスト属性に設定してJSPへ渡す
         request.setAttribute("subject", subject);
 
         // 確認画面に遷移
