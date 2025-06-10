@@ -40,16 +40,16 @@
         </div>
 
         <table border="1">
-            <tr><th>番号</th><th>名前</th><th>入学年度</th><th>クラス</th><th>在学中</th></tr>
+            <tr><th>入学年度</th><th>学籍番号</th><th>氏名</th><th>クラス</th><th>在学中</th></tr>
             <c:forEach var="s" items="${studentList}">
                 <tr>
+                    <td>${s.entYear}</td>
                     <td>${s.no}</td>
                     <td>${s.name}</td>
-                    <td>${s.entYear}</td>
                     <td>${s.classNum.class_num}</td>
                     <td><c:choose>
-                        <c:when test="${s.attend}">在学</c:when>
-                        <c:otherwise>退学</c:otherwise>
+                        <c:when test="${s.attend}">○</c:when>
+                        <c:otherwise>×</c:otherwise>
                     </c:choose></td>
                 </tr>
             </c:forEach>
