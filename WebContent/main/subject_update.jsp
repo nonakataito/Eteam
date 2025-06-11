@@ -29,8 +29,8 @@ input[type="text"] {
 	<form action="/Eteam/main/SubjectUpdateExecute.action" method="post">
 		<!-- 科目コード -->
 		<label for="cd">科目コード</label>
-		<input type="hidden" name="cd"
-			value="${subject.cd}" /> <br />
+		${subject.cd}
+		<input type="hidden" name="cd" value="${subject.cd}" /> <br />
 
 		<!-- 科目名 -->
 		<label for="name">科目名<span style="color: red;">*</span></label> <input
