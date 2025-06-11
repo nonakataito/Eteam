@@ -44,6 +44,12 @@ public class StudentUpdateExecuteAction extends Action {
 
 	    request.setAttribute("message", "学生情報を更新しました。");
 
+	    System.out.println("更新対象: no=" + student.getNo() +
+                ", name=" + student.getName() +
+                ", class=" + student.getClassNum().getClass_num() +
+                ", attend=" + student.isAttend() +
+                ", school=" + student.getSchool().getCd());
+
 	    return "redirect:StudentList.action";
 	}
 }
