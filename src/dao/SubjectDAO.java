@@ -105,6 +105,30 @@ public class SubjectDAO {
             return false;
         }
     }
+ // 科目登録処理（新規作成）
+    public boolean insert(Subject subject) {
+        try {
+            Context initCtx = new InitialContext();
+            DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/kaihatsu");
+
+            try (Connection conn = ds.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(
+                     "INSERT INTO SUBJECT (CD, NAME, SCHOOL_CD) VALUES (?, ?, ?)")) {
+
+                stmt.setString(1, subject.getCd());
+                stmt.setString(2, subject.getName());
+                stmt.setString(3, subject.getSchool().getCd());
+
+                int rows = stmt.executeUpdate();
+                return rows > 0;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
  // 科目削除処理
     public boolean delete(String code, String schoolCd) {
