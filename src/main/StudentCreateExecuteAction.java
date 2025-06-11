@@ -27,9 +27,12 @@ public class StudentCreateExecuteAction extends Action {
         student.setEntYear(entYear);
         student.setAttend(isAttend);
 
-        School school = new School();
-        school.setCd(schoolCd);
+        School school = (School) request.getSession().getAttribute("school");
+        if (school == null) {
+            return "/login.jsp"; // セッション切れ対応
+        }
         student.setSchool(school);
+
 
         ClassNum classNum = new ClassNum();
         classNum.setClass_num(classNumStr);
@@ -40,11 +43,13 @@ public class StudentCreateExecuteAction extends Action {
         boolean result = dao.save(student);
 
         // 結果に応じて画面遷移
+     // 結果に応じて画面遷移
         if (result) {
-            return "redirect:student_list.jsp";
+            return "redirect:StudentList.action"; // ← 統一
         } else {
             request.setAttribute("error", "登録に失敗しました");
-            return "forward:student_student_create.jsp";
+            return "forward:student_student_create.jsp"; // ← これは JSP なのでそのままでOK
         }
+
     }
 }
