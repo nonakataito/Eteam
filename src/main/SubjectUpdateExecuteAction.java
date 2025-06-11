@@ -24,7 +24,7 @@ public class SubjectUpdateExecuteAction extends Action {
             request.setAttribute("error", "科目名は1〜20文字で入力してください。");
             return "subject_update.jsp";  // 入力画面へ戻る
         }
-
+//        あいうえお
         // Subject オブジェクトを作成
         Subject subject = new Subject();
         subject.setCd(cd);
