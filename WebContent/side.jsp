@@ -12,11 +12,11 @@
 		<br>
 		<a href="<c:url value='StudentList.action'/>">学生管理</a>
 		<br>
-		成績管理
+		<a href="<c:url value='/sample.jsp'/>">成績管理</a>
 		<br>
-		　<a href="<c:url value='sample.jsp'/>">成績登録</a>
+		　<a href="<c:url value='/sample.jsp'/>">成績登録</a>
 		<br>
-		　<a href="<c:url value='sample.jsp'/>">成績参照</a>
+		　<a href="<c:url value='/sample.jsp'/>">成績参照</a>
 		<br>
 		<a href="<c:url value='SubjectList.action'/>">科目管理</a>
 	</ul>
