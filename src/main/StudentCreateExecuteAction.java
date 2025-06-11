@@ -25,7 +25,7 @@ public class StudentCreateExecuteAction extends Action {
         student.setNo(no);
         student.setName(name);
         student.setEntYear(entYear);
-        student.setAttend(isAttend);
+        student.setAttend(true);
 
         School school = (School) request.getSession().getAttribute("school");
         if (school == null) {
