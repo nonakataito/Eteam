@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>科目管理画面</title>
-    <link rel="stylesheet" href="css/subject.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="main-container">

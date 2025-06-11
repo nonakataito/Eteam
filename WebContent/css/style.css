@@ -1,61 +1,72 @@
-@CHARSET "UTF-8";
+@charset "UTF-8";
 
 /* ページ全体のリセット */
-body {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
     font-family: "Meiryo", "ヒラギノ角ゴ ProN", sans-serif;
+
+    display: flex;
+    flex-direction: column;
 }
 
-/* 上部タイトルエリア */
+/* ヘッダー */
 .header-wrapper {
     width: 100%;
-    background-color: #eaf3ff; /* 薄い青に変更（スクリーンショットと合わせる） */
+    background-color: #eaf3ff;
     padding: 10px 20px;
     border-bottom: 1px solid #ccc;
-    border: 1px dashed black; /* 枠線追加 */
+    flex-shrink: 0; /* ヘッダーを縮めない */
 }
 
-/* タイトルとユーザー情報の横並び */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    min-width: 0;
 }
 
-/* タイトルのスタイル */
 .header h1 {
     margin: 0;
     font-size: 1.8em;
     font-weight: bold;
+    white-space: nowrap;
 }
 
-/* ユーザー情報（名前＋ログアウト） */
 .user-info {
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 0.95em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    flex-shrink: 1;
 }
 
-/* ログアウトリンクの見た目 */
 .user-info a {
     color: #0066cc;
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .user-info a:hover {
     text-decoration: underline;
 }
 
-/* メニューとコンテンツを横並びにするコンテナ */
+/* メインコンテナ */
 .main-container {
+    flex-grow: 1; /* ここでメインが伸びる */
     display: flex;
     width: 100%;
-    height: calc(100vh - 60px);
+    min-height: 0;
 }
 
-/* 左メニューエリア */
+/* サイドメニュー */
 .menu-wrapper {
     width: 15%;
     background-color: #f8f9fa;
@@ -63,29 +74,34 @@ body {
     border-right: 1px solid #ddd;
 }
 
-/* 右コンテンツエリア */
+/* メインコンテンツ */
 .content-container {
     flex-grow: 1;
     padding: 20px;
-    min-height: 100vh;
+    min-height: 100%;
     overflow-y: auto;
+    padding-bottom: 20px; /* フッターに被らない余白 */
 }
 
 .content {
     padding-bottom: 50px;
 }
 
-/* フッターエリアの中央揃え */
+/* フッター（変動） */
 .footer {
     width: 100%;
     background-color: #ddd;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    padding: 5px 0;
+    font-size: 0.85em;
+    line-height: 1.2;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    /* position: fixed は入れない */
+    /* margin-top: auto は入れない */
 }
 
-/* ログイン全体中央配置 */
+/* ログイン関連（変更なし） */
 .login-container {
     display: flex;
     justify-content: center;
@@ -93,7 +109,6 @@ body {
     padding: 50px 0;
 }
 
-/* ログインボックスの外枠 */
 .login-box {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -104,7 +119,6 @@ body {
     text-align: center;
 }
 
-/* ログインタイトル */
 .login-box h2 {
     background-color: #f1f1f1;
     padding: 10px;
@@ -113,20 +127,17 @@ body {
     border-radius: 4px;
 }
 
-/* 入力フィールド全体 */
 .form-group {
     margin-bottom: 15px;
     text-align: left;
 }
 
-/* 入力ラベル */
 .form-group label {
     display: block;
     margin-bottom: 5px;
     font-size: 0.9em;
 }
 
-/* テキスト・パスワードボックス */
 .form-group input[type="text"],
 .form-group input[type="password"] {
     width: 100%;
@@ -136,14 +147,12 @@ body {
     border-radius: 4px;
 }
 
-/* チェックボックス */
 .form-options {
     text-align: left;
     margin-bottom: 15px;
     font-size: 0.85em;
 }
 
-/* ログインボタン */
 .form-submit input[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -157,4 +166,56 @@ body {
 
 .form-submit input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+/* ===== メニュー表示用 ===== */
+
+.menu-links {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.menu-block {
+    width: 200px;
+    min-height: 120px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.menu-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.menu-block.student {
+    background-color: #ffecec;
+}
+
+.menu-block.grade {
+    background-color: #e6f9e6;
+}
+
+.menu-block.subject {
+    background-color: #e6f0ff;
+}
+
+.menu-items a {
+    display: block;
+    margin-bottom: 6px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu-items a:hover {
+    text-decoration: underline;
 }

@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="/header.jsp" %>
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css'/>">
+
 <div class="main-container">
     <div class="menu-wrapper">
         <%@ include file="../side.jsp" %>
@@ -66,3 +68,4 @@
         </table>
     </div>
 </div>
+<%@ include file="../footer.jsp" %>
