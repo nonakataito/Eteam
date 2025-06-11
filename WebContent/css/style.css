@@ -10,12 +10,42 @@ body {
 /* 上部タイトルエリア */
 .header-wrapper {
     width: 100%;
-    background-color: #ddd;
-    padding: 15px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
+    background-color: #eaf3ff; /* 薄い青に変更（スクリーンショットと合わせる） */
+    padding: 10px 20px;
     border-bottom: 1px solid #ccc;
+    border: 1px dashed black; /* 枠線追加 */
+}
+
+/* タイトルとユーザー情報の横並び */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* タイトルのスタイル */
+.header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* ユーザー情報（名前＋ログアウト） */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95em;
+}
+
+/* ログアウトリンクの見た目 */
+.user-info a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.user-info a:hover {
+    text-decoration: underline;
 }
 
 /* メニューとコンテンツを横並びにするコンテナ */
@@ -42,7 +72,7 @@ body {
 }
 
 .content {
-    padding-bottom: 50px; /* ← ここが重要 */
+    padding-bottom: 50px;
 }
 
 /* フッターエリアの中央揃え */
@@ -55,3 +85,76 @@ body {
     left: 0;
 }
 
+/* ログイン全体中央配置 */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+/* ログインボックスの外枠 */
+.login-box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 30px 40px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* ログインタイトル */
+.login-box h2 {
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+/* 入力フィールド全体 */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* 入力ラベル */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+/* テキスト・パスワードボックス */
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* チェックボックス */
+.form-options {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 0.85em;
+}
+
+/* ログインボタン */
+.form-submit input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-submit input[type="submit"]:hover {
+    background-color: #0056b3;
+}

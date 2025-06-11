@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ include file="../header.jsp" %> <%-- タイトル + CSS --%>
+
+
 
 <!-- メニューとコンテンツを横並びに配置するコンテナ -->
 <div class="main-container">

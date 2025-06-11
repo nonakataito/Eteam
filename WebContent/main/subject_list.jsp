@@ -17,7 +17,7 @@
         <h2>科目管理</h2>
 
         <div class="new-register">
-            <a href="subjectRegister.jsp" onclick="event41()">新規登録</a>
+            <a href="../main/subject_create.jsp" onclick="event41()">新規登録</a>
         </div>
 
         <table>

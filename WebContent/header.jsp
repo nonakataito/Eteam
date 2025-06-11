@@ -11,19 +11,16 @@
 
 <!-- 上部タイトルエリア -->
 <div class="header-wrapper">
-    <h1>得点管理システム</h1>
     <div class="header">
+        <h1>得点管理システム</h1>
         <c:if test="${not empty sessionScope.user}">
-            <!-- ログインしている場合のみ表示 -->
             <div class="user-info">
-                <span>${sessionScope.user.name} さん</span>
-				<form action="<c:url value='/main/Logout.action' />" method="post">
-				    <input type="submit" value="ログアウト">
-				</form>
-
+                <span>${sessionScope.user.name} 様</span>
+                <a href="<c:url value='/main/Logout.action'/>">ログアウト</a>
             </div>
         </c:if>
     </div>
 </div>
+
 
 <!-- 必要に応じてこのファイルの最後に </body> や </html> を close するかは include 先で判断 -->
