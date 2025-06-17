@@ -1,136 +1,238 @@
 @charset "UTF-8";
 
 /* ページ全体のリセット */
+
 html, body {
+
     height: 100%;
+
     margin: 0;
+
     padding: 0;
+
     font-family: "Meiryo", "ヒラギノ角ゴ ProN", sans-serif;
+
     display: flex;
+
     flex-direction: column;
+
     min-height: 100vh;
+
 }
 
 /* ヘッダー */
+
 .header-wrapper {
+
     width: 100%;
+
     background-color: #eaf3ff;
+
     padding: 10px 20px;
+
     border-bottom: 1px solid #ccc;
+
     flex-shrink: 0;
+
 }
 
 .header {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     gap: 10px;
+
 }
 
 .header h1 {
+
     margin: 0;
+
     font-size: 1.8em;
+
     font-weight: bold;
+
 }
 
 /* メインレイアウト */
+
 .main-container {
+
     display: flex;
+
     flex: 1 0 auto; /* 高さを残り全て使う */
+
     width: 100%;
+
 }
 
 /* サイドメニュー */
+
 .menu-wrapper {
+
     width: 15%;
+
     background-color: #f8f9fa;
+
     padding: 15px;
+
     border-right: 1px solid #ddd;
+
 }
 
 /* コンテンツエリア */
+
 .content-container {
+
     flex-grow: 1;
+
     padding: 20px;
+
     overflow-y: auto;
+
     box-sizing: border-box;
+
 }
 
 /* コンテンツ内部 */
+
 .content {
+
     padding-bottom: 80px; /* フッター分の余白を確保（フッター高さと合わせる） */
+
 }
 
 /* フッター */
+
 .footer {
+
     width: 100%;
+
     background-color: #ddd;
+
     text-align: center;
+
     padding: 12px 0;
+
     font-size: 0.85em;
+
     line-height: 1.4;
+
     flex-shrink: 0;
+
     box-sizing: border-box;
+
 }
 
 /* ログインページ用 */
+
 .login-container {
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     flex-grow: 1;
+
     padding: 50px 0;
+
 }
 
 .login-box {
+
     background-color: #fff;
+
     border: 1px solid #ddd;
+
     padding: 30px 40px;
+
     border-radius: 6px;
+
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
     width: 300px;
+
     text-align: center;
+
 }
 
 .login-box h2 {
+
     background-color: #f1f1f1;
+
     padding: 10px;
+
     font-size: 1.2em;
+
     margin-bottom: 20px;
+
     border-radius: 4px;
+
 }
 
 .form-group {
+
     margin-bottom: 15px;
+
     text-align: left;
+
 }
 
 .form-group label {
+
     display: block;
+
     margin-bottom: 5px;
+
     font-size: 0.9em;
+
 }
 
 .form-group input[type="text"],
+
 .form-group input[type="password"] {
+
     width: 100%;
+
     padding: 8px;
+
     font-size: 0.9em;
+
     border: 1px solid #ccc;
+
     border-radius: 4px;
+
 }
 
 .form-submit input[type="submit"] {
+
     background-color: #007bff;
+
     color: white;
+
     border: none;
+
     padding: 10px 0;
+
     width: 100%;
+
     font-size: 1em;
+
     border-radius: 4px;
+
     cursor: pointer;
+
 }
 
 .form-submit input[type="submit"]:hover {
+
     background-color: #0056b3;
+
 }
+
