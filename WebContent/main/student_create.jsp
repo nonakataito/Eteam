@@ -21,7 +21,7 @@
 		</c:forEach>
 	</select>
 	<label>学生番号</label>
-	<input type="text" name="no" maxlength="10"required placeholder ="学生番号を入力してください。">
+	<input type="text" name="no" maxlength="10" required placeholder ="学生番号を入力してください。">
 
 	<label>氏名</label>
 	<input type="text" name="name" maxlength="30" required placeholder="名前を入力してください。">
