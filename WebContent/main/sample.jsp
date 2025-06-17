@@ -29,9 +29,9 @@
 <body>
 <div class="main-container">
 	<!-- 左メニューエリア -->
-	<div class="menu-wrapper">
-            <%@ include file="../side.jsp" %>
-        </div>
+    <div class="menu-wrapper">
+        <%@ include file="../side.jsp" %>
+    </div>
 
         <!-- 右コンテンツエリア -->
         <div class="content-container">
