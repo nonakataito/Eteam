@@ -28,8 +28,8 @@
 			<div class="menu-block grade">
 				<div class="menu-title">成績管理</div>
 				<div class="menu-items">
-					<a href="<c:url value='/sample.jsp'/>">成績登録</a> <a
-						href="<c:url value='/sample.jsp'/>">成績参照</a>
+					<a href="<c:url value='/main/sample.jsp'/>">成績登録</a> <a
+						href="<c:url value='/main/sample.jsp'/>">成績参照</a>
 				</div>
 			</div>
 
