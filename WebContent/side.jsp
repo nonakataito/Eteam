@@ -12,7 +12,7 @@
 		<br>
 		<a href="<c:url value='StudentList.action'/>">学生管理</a>
 		<br>
-		<a href="<c:url value='/main/sample.jsp'/>">成績管理</a>
+		<a >成績管理</a>
 		<br>
 		　<a href="<c:url value='/main/sample.jsp'/>">成績登録</a>
 		<br>
