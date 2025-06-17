@@ -71,6 +71,7 @@ html, body {
     line-height: 1.4;
     flex-shrink: 0;
     box-sizing: border-box;
+    position: relative;
 }
 
 /* ログインページ用 */
