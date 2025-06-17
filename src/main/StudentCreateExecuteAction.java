@@ -48,7 +48,7 @@ public class StudentCreateExecuteAction extends Action {
             return "redirect:StudentList.action"; // ← 統一
         } else {
             request.setAttribute("error", "登録に失敗しました");
-            return "forward:student_student_create.jsp"; // ← これは JSP なのでそのままでOK
+            return "../error.jsp"; // ← これは JSP なのでそのままでOK
         }
 
     }

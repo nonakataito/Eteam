@@ -110,6 +110,9 @@ public class StudentDao extends Dao {
 
 			int result = stmt.executeUpdate();
 			return result > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 
