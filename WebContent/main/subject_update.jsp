@@ -38,7 +38,7 @@ input[type="text"] {
 			maxlength="20" required /> <br />
 
 		<div class="button-area">
-			<input type="submit" value="変更" /> <a href="SubjectList.Action">戻る</a>
+			<input type="submit" value="変更" /> <a href="SubjectList.action">戻る</a>
 		</div>
 	</form>
 </body>

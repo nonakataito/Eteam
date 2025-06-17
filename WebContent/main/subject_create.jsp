@@ -22,7 +22,7 @@
 	<input type ="submit" value="登録">
 </form>
 
- <a href="../main/subject_list.jsp">戻る</a>
+ <a href="SubjectList.action">戻る</a>
 
 </body>
 </html>
