@@ -151,7 +151,7 @@ public class StudentDao extends Dao {
 		}
 	}
 
-	// 学校・クラス番号・在籍フラグで検索するフィルタ
+	// 学校・クラス番号・在籍フラグで検索するフィルタだよ
 	public List<Student> filter(School school, String classNum, boolean isAttend) throws Exception {
 		String sql = baseSql + " AND class_num=? AND is_attend=?";
 		try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
